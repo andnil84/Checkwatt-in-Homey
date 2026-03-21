@@ -1,16 +1,51 @@
 # Checkwatt in Homey
 
-Unofficial [Homey](https://homey.app) app for [Checkwatt](https://checkwatt.se) / **EnergyInBalance** — battery, FCR-D income, and site status in Flows and on the device tile.
+Inofficiell [Homey](https://homey.app)-app för [Checkwatt](https://checkwatt.se) / **EnergyInBalance** — batteri, **nettointäkter** (samma som i portalen: **alla** intäkter), och status i flöden och på enhetens platta.
 
-> **App Store:** `readme.txt` is the plain-text description for the Homey App Store (no URLs in that file per store rules). It is intentionally short and end-user focused. **This `README.md`** adds full install-from-source steps and a **FAQ** for developers—those details are not duplicated in `readme.txt`.
+> **Butik:** `readme.txt` är den korta texten för Homey App Store (inga URL:er enligt deras regler). **Denna `README.md`** har installation från källkod och FAQ för utvecklare — det återfinns inte i `readme.txt`.
+>
+> **Developers:** `readme.txt` is the plain-text App Store blurb (no URLs per store rules). **This `README.md`** adds install-from-source steps and a **FAQ** — not duplicated in `readme.txt`.
+
+---
+
+## Svenska
+
+### Vad appen gör
+
+Appen kopplar Homey till din Checkwatt-anläggning i EnergyInBalance. Du kan följa batterinivå, nettointäkter för anläggningen (samma som i portalen—**alla** intäkter), och status på enhetens platta, i Insights och i flöden. Logga in med samma användarnamn och lösenord som till tjänsten EnergyInBalance. Appen är community-utvecklad, är inte officiell från Checkwatt och använder inofficiell åtkomst till samma webb-API:er som de officiella klienterna. Tack till bidragsgivare står i appmanifestet under `contributors`.
+
+### Så här får du appen på Homey (när den finns i App Store)
+
+När appen finns i Homey App Store: öppna Homey på mobilen eller i webbläsaren, sök efter appen, välj **Installera** och följ guiden. Lägg till en enhet och logga in med EnergyInBalance. Där räcker Homeys egna gränssnitt; du behöver inte Node.js, Git eller Homey CLI, och du behöver inte klona det här repot. Du kan gärna läsa koden på GitHub på datorn — men den vanliga installationen från butiken kräver inte utvecklarverktyg. Att bygga från källkod är bara för test eller utveckling (se nedan).
+
+### Så här installerar du från källkod (utvecklare och testare)
+
+1. Installera Node.js (gärna LTS), ev. Git, sedan: `npm install -g homey`
+2. `homey login` — följ webbläsaren.
+3. Klona repot eller ladda ner ZIP.
+4. Terminal i projektmappen (`app.json` + `package.json`).
+5. `npx homey app validate`
+6. `homey app install --remote` (ingen Docker på PC för detta).
+7. I Homey: lägg till enhet, ange EnergyInBalance.
+8. Utveckling: `homey app run --remote`
+
+### Frågor som ofta dyker upp
+
+- **Git fungerar inte:** Installera Git / lägg till PATH — `git --version`
+- **Docker?** Inte för `--remote`
+- **Ingen drivrutin:** Kör `homey app validate`, lägg till enhet under appen
+- **Uppdatering:** `homey app install --remote` igen
+- **Var loggar jag in EiB?** Vid pairing eller under enhetens appinställningar
 
 ---
 
 ## English
 
+Unofficial [Homey](https://homey.app) app for [Checkwatt](https://checkwatt.se) / **EnergyInBalance** — battery, **net income** (same totals as the portal: **all** revenue streams), and site status in Flows and on the device tile.
+
 ### What this app does
 
-This app connects Homey to your CheckWatt EnergyInBalance account. You can see battery level, FCR-D income and site status on the device tile, in Insights and in Flows. Sign in with the same username and password you use for the EnergyInBalance service. This app is made by the community, is not official Checkwatt software, and uses unofficial access to the same web APIs the mobile and web clients use. Credit for API understanding belongs in the app manifest contributors section.
+This app connects Homey to your CheckWatt EnergyInBalance account. You can see battery level, net income for the site (the same totals as in EnergyInBalance—**all** revenue streams), and site status on the device tile, in Insights and in Flows. Sign in with the same username and password you use for the EnergyInBalance service. This app is made by the community, is not official Checkwatt software, and uses unofficial access to the same web APIs the mobile and web clients use. Credit for API understanding belongs in the app manifest contributors section.
 
 ### How to get the app on Homey (when it is in the App Store)
 
@@ -56,37 +91,6 @@ Use this if you are testing a build from Git, or developing the app yourself.
 | No driver / can't add device | The app manifest must list drivers and capabilities correctly. After changes, run `homey app validate` again. Use **Add device** under the app. |
 | How do I update after code changes? | Run `homey app install --remote` again from the project folder, or `homey app run --remote` while testing. |
 | Where do I enter EnergyInBalance? | In the pairing flow when you add a CheckWatt site, or later under the device settings for the app. |
-
----
-
-## Svenska
-
-### Vad appen gör
-
-Appen kopplar Homey till din Checkwatt-anläggning i EnergyInBalance. Du kan följa batterinivå, FCR-D-intäkter och status på enhetens platta, i Insights och i flöden. Logga in med samma användarnamn och lösenord som till tjänsten EnergyInBalance. Appen är community-utvecklad, är inte officiell från Checkwatt och använder inofficiell åtkomst till samma webb-API:er som de officiella klienterna. Tack till bidragsgivare står i appmanifestet under `contributors`.
-
-### Så här får du appen på Homey (när den finns i App Store)
-
-När appen finns i Homey App Store: öppna Homey på mobilen eller i webbläsaren, sök efter appen, välj **Installera** och följ guiden. Lägg till en enhet och logga in med EnergyInBalance. Där räcker Homeys egna gränssnitt; du behöver inte Node.js, Git eller Homey CLI, och du behöver inte klona det här repot. Du kan gärna läsa koden på GitHub på datorn — men den vanliga installationen från butiken kräver inte utvecklarverktyg. Att bygga från källkod är bara för test eller utveckling (se nedan).
-
-### Så här installerar du från källkod (utvecklare och testare)
-
-1. Installera Node.js (gärna LTS), ev. Git, sedan: `npm install -g homey`
-2. `homey login` — följ webbläsaren.
-3. Klona repot eller ladda ner ZIP.
-4. Terminal i projektmappen (`app.json` + `package.json`).
-5. `npx homey app validate`
-6. `homey app install --remote` (ingen Docker på PC för detta).
-7. I Homey: lägg till enhet, ange EnergyInBalance.
-8. Utveckling: `homey app run --remote`
-
-### Frågor som ofta dyker upp
-
-- **Git fungerar inte:** Installera Git / lägg till PATH — `git --version`
-- **Docker?** Inte för `--remote`
-- **Ingen drivrutin:** Kör `homey app validate`, lägg till enhet under appen
-- **Uppdatering:** `homey app install --remote` igen
-- **Var loggar jag in EiB?** Vid pairing eller under enhetens appinställningar
 
 ---
 

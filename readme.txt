@@ -1,6 +1,6 @@
 WHAT THIS APP DOES
 
-This app connects Homey to your CheckWatt EnergyInBalance account. You can see battery level, FCR-D income and site status on the device tile, in Insights and in Flows. Sign in with the same username and password you use for the EnergyInBalance service. This app is made by the community, is not official Checkwatt software, and uses unofficial access to the same web APIs the mobile and web clients use. Credit for API understanding belongs in the app manifest contributors section.
+This app connects Homey to your CheckWatt EnergyInBalance account. You can see battery level, net income for the site, and site status on the device tile, in Insights and in Flows. Sign in with the same username and password you use for the EnergyInBalance service. This app is made by the community, is not official Checkwatt software, and uses unofficial access to the same web APIs the mobile and web clients use. Credit for API understanding belongs in the app manifest contributors section.
 
 
 HOW TO INSTALL FROM THE HOMEY APP STORE
@@ -17,7 +17,7 @@ If you install from the project source yourself, you need Node.js and the Homey 
 
 VAD APPEN GÖR
 
-Appen kopplar Homey till din CheckWatt-anläggning i EnergyInBalance. Du kan följa batterinivå, FCR-D-intäkter och status på enhetens platta, i Insights och i flöden. Logga in med samma användarnamn och lösenord som till tjänsten EnergyInBalance. Appen är community-utvecklad, är inte officiell från CheckWatt och använder inofficiell åtkomst till samma webb-API:er som de officiella klienterna. Tack till bidragsgivare står i appmanifestet under contributors.
+Appen kopplar Homey till din CheckWatt-anläggning i EnergyInBalance. Du kan följa batterinivå, nettointäkter för anläggningen, och status på enhetens platta, i Insights och i flöden. Logga in med samma användarnamn och lösenord som till tjänsten EnergyInBalance. Appen är community-utvecklad, är inte officiell från CheckWatt och använder inofficiell åtkomst till samma webb-API:er som de officiella klienterna. Tack till bidragsgivare står i appmanifestet under contributors.
 
 
 INSTALLATION FRÅN HOMEY APP STORE

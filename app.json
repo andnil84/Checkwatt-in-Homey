@@ -12,8 +12,8 @@
     "sv": "Checkwatt"
   },
   "description": {
-    "en": "Read battery, power and FCR-D revenue from CheckWatt EnergyInBalance (unofficial API, same approach as the Home Assistant integration).",
-    "sv": "Läs batteri, effekt och FCR-D-intäkter från CheckWatt EnergyInBalance (inofficiellt API, samma angreppssätt som Home Assistant-integrationen)."
+    "en": "See your site’s battery, power, and net revenue in Homey—same totals as EnergyInBalance (all income streams). Unofficial API.",
+    "sv": "Se batteri, effekt och nettointäkter i Homey—samma som i EnergyInBalance (alla intäkter). Inofficiellt API."
   },
   "category": [
     "energy"
