@@ -109,17 +109,44 @@ Låt fönstret vara öppet medan du testar. Avsluta med **Ctrl+C** när du är k
 
 ---
 
+## Support / Stöd
+
+<a href="https://www.buymeacoffee.com/andnil84"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy me a coffee" width="200"></a>
+
+**English:** If this app saves you time, you can [**buy me a coffee**](https://www.buymeacoffee.com/andnil84) — completely optional. This is a community project and is not affiliated with Checkwatt or Athom.
+
+**Svenska:** Om appen hjälper dig får du gärna [**bjuda på en kaffe**](https://www.buymeacoffee.com/andnil84) — frivilligt. Projektet är hobbydrivet och oberoende av Checkwatt och Athom.
+
+---
+
 ## English
 
 Unofficial [Homey](https://homey.app) app for [Checkwatt](https://checkwatt.se) / **EnergyInBalance** — battery, **net income** (same totals as the portal: **all** revenue streams), and site status in Flows and on the device tile.
 
 ### What this app does
 
-This app connects Homey to your CheckWatt EnergyInBalance account. You can see battery level, net income for the site (the same totals as in EnergyInBalance—**all** revenue streams), and site status on the device tile, in Insights and in Flows. Sign in with the same username and password you use for the EnergyInBalance service. This app is made by the community, is not official Checkwatt software, and uses unofficial access to the same web APIs the mobile and web clients use. Credit for API understanding belongs in the app manifest contributors section.
+**In plain terms:** This app connects your **Homey** to your **Checkwatt EnergyInBalance** site (your battery / energy installation). You can use it to:
+
+- See **battery level** (how full the battery is).
+- See **net income** for the site — the **same totals** as in the EnergyInBalance portal (**all** revenue streams together, not a single product line).
+- See **status** on the **device tile**, in **Insights** (history / graphs), and in **Flows** (automations).
+
+**Signing in:** Use the **same username and password** you already use for the EnergyInBalance website and official Checkwatt apps. You are **not** creating a new account — Homey only stores what you enter so it can log in for you.
+
+**Please note:** This app is **community-made**. It is **not** official Checkwatt software. It talks to Checkwatt’s servers using the same kind of **unofficial** web API access as other community tools. API / reverse-engineering credit is listed under **`contributors`** in the app manifest.
 
 ### How to get the app on Homey (when it is in the App Store)
 
-When the app is published in the Homey App Store, open Homey on your phone or in the browser, search for Checkwatt or the app name, tap **Install**, and follow the prompts. Then add a device under the app and enter your EnergyInBalance login. For that route you only use Homey's own screens—you do not need Node.js, Git, or the Homey CLI, and you do not need to clone this repository. Many people use a computer to browse the store; the point is that the normal install does not use developer tools. Building from Git is only for testing or development (see below).
+**This is the normal, easy path.** You do **not** need a PC, Node.js, Git, or a “developer” setup.
+
+1. **Open Homey** on your phone or tablet, **or** open **[homey.app](https://homey.app)** in a browser (you can use a computer just to click — you still install to your Homey in the cloud).
+2. When this app is **published** in the Homey App Store, use **Search** and type **Checkwatt** (or the exact name shown in the store).
+3. Tap **Install** and wait until the download finishes.
+4. Go to **Apps** → find **Checkwatt** → tap **Add device** (wording may be **Pair** / **Lägg till enhet** depending on language).
+5. When the app asks for login, enter your **EnergyInBalance** username and password — the **same** ones you use for the [Checkwatt / EnergyInBalance](https://checkwatt.se) web portal. If your account has **several sites**, pick the site you want when the list appears.
+6. You can **change or re-enter** login later under **Device settings** for this app.
+
+If something fails: try on **Wi‑Fi**, confirm your **Athom / Homey** account is the one linked to your **Homey Pro**, and that the app is actually **published** in your region’s store. **Building from Git** is only for testers and developers (see below).
 
 ### How to install from source (developers and testers)
 
@@ -146,65 +173,71 @@ You see **`app.json`** and **`package.json`** in that folder.
   *Or* right-click empty space → **Show more options** → **Open in Terminal** if available.
 - **Mac:** Right-click the folder → open Terminal here, or in Terminal type `cd `, drag the folder in, press Enter.
 
-**2. Install the Homey CLI (once)**
+**2. Install the Homey CLI (once)**  
+Paste the line below, press **Enter**, and wait until the text stops scrolling. You should **not** see a red “error” at the end.
 
 ```bash
 npm install -g homey
 ```
 
-**3. Log in to Athom**
+**3. Log in to Athom (same account as your Homey)**  
+Paste:
 
 ```bash
 homey login
 ```
 
-Complete the browser login.
+A **browser window** should open. Log in with the **same Athom account** you use in the Homey mobile app, and approve access. Do not close the browser too early.
 
-**4. Validate the app package**
+**4. Validate the app package**  
+Paste:
 
 ```bash
 npx homey app validate
 ```
 
-Fix any errors before continuing.
+Wait until it finishes. It should say the app **validated** successfully. If you see **errors**, read the message — often a typo in `app.json` or a missing file. Fix, then run the command again.
 
-**5. Install to your Homey over the internet (no Docker on your PC)**
+**5. Send the app to your Homey over the internet**  
+Paste:
 
 ```bash
 homey app install --remote
 ```
 
-Wait until it finishes.
+You do **not** need **Docker** on your PC for this. Wait until the command **exits** on its own (it can take a minute).
 
-**6. On Homey: add your site**
+**6. On Homey: add your site**  
+On your phone or **[homey.app](https://homey.app)**: **Apps** → this app → **Add device**. Enter your **EnergyInBalance** username and password (the **Checkwatt / portal** login — **not** a special “Homey-only” password). If several sites appear, choose the right one.
 
-Apps → this app → **Add device**. Use your **EnergyInBalance** username and password (the Checkwatt / portal login — not a separate Homey-only password for this step).
-
-**7. (Optional) Dev mode with logs**
+**7. (Optional) Development with live logs**  
+Paste:
 
 ```bash
 homey app run --remote
 ```
 
-Stop with **Ctrl+C** when done.
+Leave the window open while you test. Press **Ctrl+C** to stop.
 
 #### Quick troubleshooting
 
-- **`npm` / `node` not found:** Reboot after installing Node; open a new terminal in the project folder.
-- **`homey login` stuck:** Check firewall / adblock; try setting another browser as default.
-- **Git:** Only needed to clone; ZIP users can skip Git.
-- **Docker:** **Not** required for `install --remote` or `run --remote` on your PC.
-- **Re-login / change EnergyInBalance credentials:** Device settings for this app, or pair again.
+- **`npm` or `node` is not recognized:** Install Node.js LTS from [nodejs.org](https://nodejs.org/), then **restart the PC**. Open a **new** terminal in the project folder and try again.
+- **`homey login` does nothing or hangs:** Check firewall / VPN / ad-blockers; set a **different default browser** temporarily; try again.
+- **Git:** Only if you **clone** the repo. If you used **ZIP**, you can ignore Git completely.
+- **Docker:** **Not** needed on your PC for `install --remote` or `run --remote`.
+- **“No driver” / cannot add device:** Run `npx homey app validate` again. Use **Add device** under **this** app, not only the generic Homey device list.
+- **Update after you changed code:** From the project folder, run `homey app install --remote` again (or `homey app run --remote` while testing).
+- **Change EnergyInBalance password / username:** Device **settings** for this app in Homey, or remove the device and add it again.
 
 ### FAQ
 
 | Question | Answer |
 |----------|--------|
-| Why doesn't `git` work? | Git may be missing or not on your `PATH`. Install Git for Windows, restart the terminal, or add Git's `cmd` folder to the system `PATH`. Check with `git --version`. |
-| Do I need Docker? | **No** for `homey app install --remote` or `homey app run --remote`. Docker is for other CLI workflows; remote install uses the cloud. |
-| No driver / can't add device | The app manifest must list drivers and capabilities correctly. After changes, run `homey app validate` again. Use **Add device** under the app. |
-| How do I update after code changes? | Run `homey app install --remote` again from the project folder, or `homey app run --remote` while testing. |
-| Where do I enter EnergyInBalance? | In the pairing flow when you add a CheckWatt site, or later under the device settings for the app. |
+| Why doesn't `git` work? | **Git is optional** if you downloaded a ZIP. If you need Git: install [Git for Windows](https://git-scm.com/download/win) (or Mac/Linux package), **restart the terminal**, then run `git --version`. If it still fails, search “add Git to PATH” for your OS. |
+| Do I need Docker? | **No** for `homey app install --remote` or `homey app run --remote`. Docker is used for other advanced CLI setups; remote install talks to Athom’s cloud. |
+| No driver / can't add device | Run `npx homey app validate`. In Homey, go to **Apps** → **Checkwatt** → **Add device** (not “generic Z-Wave” pairing). |
+| How do I update after code changes? | In the project folder: `homey app install --remote` again. For live testing: `homey app run --remote`. |
+| Where do I enter EnergyInBalance? | During **Add device** / pairing, **or** later under **Device settings** for the Checkwatt device. |
 
 ---
 
