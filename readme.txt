@@ -5,7 +5,7 @@ This app connects Homey to your CheckWatt EnergyInBalance account. You can see b
 
 HOW TO GET THE APP ON HOMEY (WHEN IT IS IN THE APP STORE)
 
-When the app is published in the Homey App Store, open the Homey app on your phone or the web interface, search for Checkwatt or the app name, tap Install, and follow the prompts. Then add a device under the app and enter your EnergyInBalance login. No computer or command line is required.
+When the app is published in the Homey App Store, open Homey on your phone or in the browser, search for Checkwatt or the app name, tap Install, and follow the prompts. Then add a device under the app and enter your EnergyInBalance login. For that route you only use Homey's own screens—you do not need Node.js, Git, or the Homey CLI, and you do not need to clone this repository. Many people use a computer to browse the store; the point is that the normal install does not use developer tools. Building from Git is only for testing or development (see below).
 
 
 HOW TO INSTALL FROM SOURCE (DEVELOPERS AND TESTERS)
@@ -54,7 +54,7 @@ Appen kopplar Homey till din CheckWatt-anläggning i EnergyInBalance. Du kan fö
 
 SÅ HÄR FÅR DU APPEN PÅ HOMEY (NÄR DEN FINNS I APP STORE)
 
-När appen är publicerad i Homey App Store: öppna Homey på mobilen eller webben, sök efter appen, välj Installera och följ guiden. Lägg sedan till en enhet under appen och ange dina inloggningsuppgifter för EnergyInBalance. Du behöver ingen dator eller kommandorad.
+När appen finns i Homey App Store: öppna Homey på mobilen eller i webbläsaren, sök efter appen, välj Installera och följ guiden. Lägg till en enhet och logga in med EnergyInBalance. Där räcker Homeys egna gränssnitt; du behöver inte Node.js, Git eller Homey CLI, och du behöver inte klona det här repot. Du kan gärna läsa koden på GitHub på datorn—men den vanliga installationen från butiken kräver inte utvecklarverktyg. Att bygga från källkod är bara för test eller utveckling (se nedan).
 
 
 SÅ HÄR INSTALLERAR DU FRÅN KÄLLKOD (UTVECKLARE OCH TESTARE)
