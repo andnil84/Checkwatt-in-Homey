@@ -20,18 +20,88 @@ När appen finns i Homey App Store: öppna Homey på mobilen eller i webbläsare
 
 ### Så här installerar du från källkod (utvecklare och testare)
 
-1. Installera Node.js (gärna LTS), ev. Git, sedan: `npm install -g homey`
-2. `homey login` — följ webbläsaren.
-3. Klona repot eller ladda ner ZIP.
-4. Terminal i projektmappen (`app.json` + `package.json`).
-5. `npx homey app validate`
-6. `homey app install --remote` (ingen Docker på PC för detta).
-7. I Homey: lägg till enhet, ange EnergyInBalance.
-8. Utveckling: `homey app run --remote`
+**Börja inte här om du bara vill använda appen.** Den enkla vägen är att installera från **Homey App Store** (avsnittet ovan) — då behöver du aldrig öppna en terminal eller installera Node.js.
+
+Att följa stegen nedan innebär att du skriver **kommandon** i ett svart/vitt fönster på datorn (en **terminal**). Det är samma typ av fönster som IT-support ibland ber dig öppna. Om det känns obekant: **det är helt okej att be någon som brukar datorer** om hjälp, eller **vänta** tills appen finns i butiken.
+
+#### Innan du börjar — checklista
+
+- [ ] **Homey Pro** är igång och kopplad till ditt Athom-konto (samma inloggning som i Homey-appen).
+- [ ] Du har **internet** på datorn.
+- [ ] Du har **projektmappen** med appens kod: ladda ner **ZIP** från GitHub (**Code** → **Download ZIP**), packa upp någonstans du hittar (t.ex. Skrivbordet), och döp gärna mappen till något kort namn. *Alternativ:* om du redan använder Git kan du klona repot i stället.
+- [ ] Du har installerat **Node.js** (LTS) från [https://nodejs.org/](https://nodejs.org/) med standardinställningarna. Efter installation: **starta om datorn** om kommandona `node` eller `npm` inte hittas (vanligt på Windows).
+
+#### Så vet du att du står i rätt mapp
+
+Öppna mappen du packade upp. Inuti ska du se filerna **`app.json`** och **`package.json`**. Ser du dem i Utforskaren är du på rätt ställe.
+
+#### Steg-för-steg
+
+**1. Öppna terminalen *i* projektmappen**
+
+- **Windows 10/11:** Öppna mappen i Utforskaren. Klicka i **adressfältet** (där sökvägen står), skriv `powershell`, tryck **Enter**. Ett nytt fönster öppnas och du ska redan stå i rätt mapp.  
+  *Alternativ:* högerklicka i mappens tomma yta → **Visa fler alternativ** → **Öppna i Terminal** (om det finns).  
+- **Mac:** Högerklicka på mappen → **Ny terminal här** (eller öppna Terminal och skriv `cd ` med ett mellanslag, dra in mappen från skrivbordet och tryck Enter).
+
+**2. Installera Homey-kommandon på datorn (görs en gång)**  
+Klistra in raden nedan, tryck **Enter**, och vänta tills texten slutar rulla utan rött felmeddelande.
+
+```bash
+npm install -g homey
+```
+
+**3. Logga in mot Athom (samma konto som till Homey)**  
+Klistra in:
+
+```bash
+homey login
+```
+
+Webbläsaren öppnas — logga in och godkänn. Stäng inte för tidigt.
+
+**4. Kontrollera att app-paketet är helt**  
+Klistra in:
+
+```bash
+npx homey app validate
+```
+
+Det ska avslutas med att valideringen lyckades. Står det fel: läs meddelandet, eller se **Felsökning** nedan.
+
+**5. Skicka appen till din Homey över internet**  
+Klistra in:
+
+```bash
+homey app install --remote
+```
+
+Du behöver **inte** installera Docker på datorn för detta. Vänta tills kommandot är färdigt.
+
+**6. I Homey: lägg till din anläggning**  
+Öppna Homey (mobil eller webb) → **Appar** → hitta den här appen → **Lägg till enhet**. Ange **samma användarnamn och lösenord som du använder till EnergyInBalance** (Checkwatts webbportal — det är alltså inte ett separat “Homey-lösenord” för detta steg).
+
+**7. (Valfritt) Utveckling med loggar i terminalen**  
+Klistra in:
+
+```bash
+homey app run --remote
+```
+
+Låt fönstret vara öppet medan du testar. Avsluta med **Ctrl+C** när du är klar.
+
+#### Felsökning (kort)
+
+- **`npm` eller `node` hittas inte:** Starta om datorn efter Node-installation. Öppna terminalen på nytt i projektmappen.
+- **`homey login` hänger:** Kontrollera brandvägg/adblocker, prova annan webbläsare som standard.
+- **Git:** Behövs bara om du ska *klona*; för ZIP räcker Utforskaren.
+- **Docker:** Krävs **inte** för `install --remote` eller `run --remote` på din PC.
+- **Kan inte lägga till enhet:** Kör `npx homey app validate` igen. Lägg till enhet under **just den här appen** i Homey.
+- **Uppdatera efter ändringar i koden:** Kör `homey app install --remote` igen från samma mapp.
+- **Var ändrar jag inloggning till EnergyInBalance?** Under enhetens inställningar för appen, eller när du lägger till enheten från början.
 
 ### Frågor som ofta dyker upp
 
-- **Git fungerar inte:** Installera Git / lägg till PATH — `git --version`
+- **Git fungerar inte:** Installera [Git för Windows](https://git-scm.com/download/win) eller lägg till PATH — testa med `git --version` i terminalen. *Du kan hoppa över Git om du använder ZIP.*
 - **Docker?** Inte för `--remote`
 - **Ingen drivrutin:** Kör `homey app validate`, lägg till enhet under appen
 - **Uppdatering:** `homey app install --remote` igen
@@ -53,34 +123,78 @@ When the app is published in the Homey App Store, open Homey on your phone or in
 
 ### How to install from source (developers and testers)
 
-Use this if you are testing a build from Git, or developing the app yourself.
+**Do not start here if you only want to use the app.** The easy path is the **Homey App Store** (section above): no terminal, no Node.js.
 
-1. **Prerequisites on your PC:** Install [Node.js](https://nodejs.org/) (LTS recommended). Install [Git](https://git-scm.com/) if you want to clone the repository. Install the Homey CLI globally:
-   ```bash
-   npm install -g homey
-   ```
-2. Log in to your Athom account in the CLI:
-   ```bash
-   homey login
-   ```
-   Follow the browser step so the CLI is allowed to talk to your Homey.
-3. Get the project files on your computer — clone this repo or download the source as ZIP and unpack.
-4. In a terminal, `cd` into the project folder (the one that contains `app.json` and `package.json`).
-5. Validate the app:
-   ```bash
-   npx homey app validate
-   ```
-   Fix any errors before continuing.
-6. Install on your Homey Pro over the internet (**no Docker** needed on your PC for this):
-   ```bash
-   homey app install --remote
-   ```
-   Wait until the command finishes.
-7. On Homey, open the app list, find this app, and **Add device**. Use your EnergyInBalance username and password. If you have several sites under one login, pick the one that appears in the list.
-8. For development with live logs in the terminal:
-   ```bash
-   homey app run --remote
-   ```
+The steps below mean typing **commands** in a terminal window. If that feels unfamiliar, ask someone comfortable with PCs, or wait for the store release.
+
+#### Before you start — checklist
+
+- [ ] **Homey Pro** is online and linked to your Athom account (same login as the Homey mobile app).
+- [ ] Your **PC has internet**.
+- [ ] You have the **project folder**: download the repo as **ZIP** from GitHub (**Code** → **Download ZIP**), unzip somewhere easy to find. *Or* clone with Git if you already use it.
+- [ ] **Node.js** (LTS) installed from [https://nodejs.org/](https://nodejs.org/) with defaults. If `node` or `npm` is “not recognized”, **restart the PC** after install (common on Windows).
+
+#### You are in the right folder when…
+
+You see **`app.json`** and **`package.json`** in that folder.
+
+#### Step-by-step
+
+**1. Open a terminal *in* the project folder**
+
+- **Windows:** In File Explorer, open the folder. Click the **address bar**, type `powershell`, press **Enter**.  
+  *Or* right-click empty space → **Show more options** → **Open in Terminal** if available.
+- **Mac:** Right-click the folder → open Terminal here, or in Terminal type `cd `, drag the folder in, press Enter.
+
+**2. Install the Homey CLI (once)**
+
+```bash
+npm install -g homey
+```
+
+**3. Log in to Athom**
+
+```bash
+homey login
+```
+
+Complete the browser login.
+
+**4. Validate the app package**
+
+```bash
+npx homey app validate
+```
+
+Fix any errors before continuing.
+
+**5. Install to your Homey over the internet (no Docker on your PC)**
+
+```bash
+homey app install --remote
+```
+
+Wait until it finishes.
+
+**6. On Homey: add your site**
+
+Apps → this app → **Add device**. Use your **EnergyInBalance** username and password (the Checkwatt / portal login — not a separate Homey-only password for this step).
+
+**7. (Optional) Dev mode with logs**
+
+```bash
+homey app run --remote
+```
+
+Stop with **Ctrl+C** when done.
+
+#### Quick troubleshooting
+
+- **`npm` / `node` not found:** Reboot after installing Node; open a new terminal in the project folder.
+- **`homey login` stuck:** Check firewall / adblock; try setting another browser as default.
+- **Git:** Only needed to clone; ZIP users can skip Git.
+- **Docker:** **Not** required for `install --remote` or `run --remote` on your PC.
+- **Re-login / change EnergyInBalance credentials:** Device settings for this app, or pair again.
 
 ### FAQ
 
