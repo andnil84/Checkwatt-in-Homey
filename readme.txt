@@ -1,0 +1,3 @@
+This app connects Homey to your CheckWatt EnergyInBalance account so you can follow battery level, FCR-D income and site status on the device, in Insights and in Flows. Sign in with your EnergyInBalance username and password. The app is made by the community, is not official CheckWatt software, and uses unofficial access to the same web APIs the mobile and web clients use.
+
+Appen kopplar Homey till din CheckWatt-anläggning i EnergyInBalance så att du kan följa batteri, intäkter och status på enheten, i Insights och i flöden. Logga in med ditt användarnamn och lösenord för EnergyInBalance. Appen är community-utvecklad, är inte officiell från CheckWatt och använder inofficiell åtkomst till samma webb-API:er som de officiella klienterna.

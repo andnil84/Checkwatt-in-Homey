@@ -1,0 +1,35 @@
+[
+  {
+    "type": "group",
+    "label": {
+      "en": "EnergyInBalance (EiB)",
+      "sv": "EnergyInBalance (EiB)"
+    },
+    "children": [
+      {
+        "id": "username",
+        "type": "text",
+        "label": {
+          "en": "Username",
+          "sv": "Användarnamn"
+        },
+        "hint": {
+          "en": "Same as on energyinbalance.se",
+          "sv": "Samma som på energyinbalance.se"
+        },
+        "value": "",
+        "highlight": true
+      },
+      {
+        "id": "password",
+        "type": "password",
+        "label": {
+          "en": "Password",
+          "sv": "Lösenord"
+        },
+        "value": "",
+        "highlight": true
+      }
+    ]
+  }
+]

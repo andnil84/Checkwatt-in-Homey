@@ -1,0 +1,10 @@
+{
+  "type": "string",
+  "uiComponent": "sensor",
+  "title": {
+    "en": "EiB status",
+    "sv": "EiB-status"
+  },
+  "getable": true,
+  "setable": false
+}

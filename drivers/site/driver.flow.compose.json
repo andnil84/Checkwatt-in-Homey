@@ -1,0 +1,280 @@
+{
+  "triggers": [
+    {
+      "id": "net_income_daily_changed",
+      "highlight": true,
+      "title": {
+        "en": "Daily net income changed",
+        "sv": "Daglig nettointäkt ändrades"
+      },
+      "tokens": [
+        {
+          "name": "net_income_daily",
+          "type": "number",
+          "title": {
+            "en": "Daily net income (SEK)",
+            "sv": "Daglig nettointäkt (SEK)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "net_income_tomorrow_changed",
+      "title": {
+        "en": "Tomorrow estimated net income changed",
+        "sv": "Imorgons uppskattade nettointäkt ändrades"
+      },
+      "tokens": [
+        {
+          "name": "net_income_tomorrow",
+          "type": "number",
+          "title": {
+            "en": "Tomorrow net income (SEK)",
+            "sv": "Imorgon nettointäkt (SEK)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "net_income_annual_changed",
+      "title": {
+        "en": "Annual net income changed",
+        "sv": "Årlig nettointäkt ändrades"
+      },
+      "tokens": [
+        {
+          "name": "net_income_annual",
+          "type": "number",
+          "title": {
+            "en": "Annual net income (SEK)",
+            "sv": "Årlig nettointäkt (SEK)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "meter_link_status_changed",
+      "highlight": true,
+      "title": {
+        "en": "CM / meter link status changed",
+        "sv": "CM / mätförbindelse ändrades"
+      },
+      "hint": {
+        "en": "When the reported status becomes OK, Offline, or Test (.83). Token: current status.",
+        "sv": "När rapporterad status blir OK, Offline eller Test (.83). Token: aktuell status."
+      },
+      "tokens": [
+        {
+          "name": "meter_link_status",
+          "type": "string",
+          "title": {
+            "en": "Status (ok / offline / test)",
+            "sv": "Status (ok / offline / test)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "eib_connection_lost",
+      "highlight": true,
+      "title": {
+        "en": "EnergyInBalance could not be reached",
+        "sv": "Kunde inte nå EnergyInBalance"
+      },
+      "hint": {
+        "en": "When login or API fails after a successful update. Token: error message.",
+        "sv": "När inloggning eller API misslyckas efter en lyckad uppdatering. Token: felmeddelande."
+      },
+      "tokens": [
+        {
+          "name": "error",
+          "type": "string",
+          "title": {
+            "en": "Error message",
+            "sv": "Felmeddelande"
+          }
+        }
+      ]
+    },
+    {
+      "id": "eib_connection_restored",
+      "highlight": true,
+      "title": {
+        "en": "EnergyInBalance is reachable again",
+        "sv": "EnergyInBalance går att nå igen"
+      },
+      "hint": {
+        "en": "When the API responds OK again after a failure.",
+        "sv": "När API:t svarar OK igen efter ett fel."
+      }
+    }
+  ],
+  "conditions": [
+    {
+      "id": "net_income_daily_above",
+      "title": {
+        "en": "Daily net income is above…",
+        "sv": "Daglig nettointäkt är över…"
+      },
+      "titleFormatted": {
+        "en": "Daily net income is above [[sek]] SEK",
+        "sv": "Daglig nettointäkt är över [[sek]] SEK"
+      },
+      "args": [
+        {
+          "name": "sek",
+          "type": "number",
+          "min": 0,
+          "step": 1,
+          "title": {
+            "en": "Amount",
+            "sv": "Belopp"
+          },
+          "placeholder": {
+            "en": "SEK",
+            "sv": "SEK"
+          }
+        }
+      ]
+    },
+    {
+      "id": "net_income_daily_below",
+      "title": {
+        "en": "Daily net income is below…",
+        "sv": "Daglig nettointäkt är under…"
+      },
+      "titleFormatted": {
+        "en": "Daily net income is below [[sek]] SEK",
+        "sv": "Daglig nettointäkt är under [[sek]] SEK"
+      },
+      "args": [
+        {
+          "name": "sek",
+          "type": "number",
+          "min": 0,
+          "step": 1,
+          "title": {
+            "en": "Amount",
+            "sv": "Belopp"
+          },
+          "placeholder": {
+            "en": "SEK",
+            "sv": "SEK"
+          }
+        }
+      ]
+    },
+    {
+      "id": "battery_below",
+      "title": {
+        "en": "Battery charge is below…",
+        "sv": "Batterinivå är under…"
+      },
+      "titleFormatted": {
+        "en": "Battery charge is below [[pct]]%",
+        "sv": "Batterinivå är under [[pct]]%"
+      },
+      "args": [
+        {
+          "name": "pct",
+          "type": "range",
+          "min": 0,
+          "max": 1,
+          "step": 0.01,
+          "label": "%",
+          "labelMultiplier": 100,
+          "labelDecimals": 0,
+          "title": {
+            "en": "Charge level",
+            "sv": "Laddningsnivå"
+          }
+        }
+      ]
+    },
+    {
+      "id": "battery_above",
+      "title": {
+        "en": "Battery charge is above…",
+        "sv": "Batterinivå är över…"
+      },
+      "titleFormatted": {
+        "en": "Battery charge is above [[pct]]%",
+        "sv": "Batterinivå är över [[pct]]%"
+      },
+      "args": [
+        {
+          "name": "pct",
+          "type": "range",
+          "min": 0,
+          "max": 1,
+          "step": 0.01,
+          "label": "%",
+          "labelMultiplier": 100,
+          "labelDecimals": 0,
+          "title": {
+            "en": "Charge level",
+            "sv": "Laddningsnivå"
+          }
+        }
+      ]
+    },
+    {
+      "id": "meter_link_status_is",
+      "title": {
+        "en": "CM / meter link is…",
+        "sv": "CM / mätförbindelse är…"
+      },
+      "titleFormatted": {
+        "en": "CM / meter link is [[state]]",
+        "sv": "CM / mätförbindelse är [[state]]"
+      },
+      "args": [
+        {
+          "name": "state",
+          "type": "dropdown",
+          "title": {
+            "en": "Status",
+            "sv": "Status"
+          },
+          "values": [
+            {
+              "id": "ok",
+              "title": {
+                "en": "OK",
+                "sv": "OK"
+              }
+            },
+            {
+              "id": "offline",
+              "title": {
+                "en": "Offline",
+                "sv": "Offline"
+              }
+            },
+            {
+              "id": "test",
+              "title": {
+                "en": "Test",
+                "sv": "Test"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "id": "refresh_now",
+      "highlight": true,
+      "title": {
+        "en": "Refresh CheckWatt data",
+        "sv": "Uppdatera CheckWatt-data nu"
+      },
+      "hint": {
+        "en": "Fetches the latest values from EnergyInBalance (same as the regular poll).",
+        "sv": "Hämtar senaste värden från EnergyInBalance (samma som ordinarie avläsning)."
+      }
+    }
+  ]
+}

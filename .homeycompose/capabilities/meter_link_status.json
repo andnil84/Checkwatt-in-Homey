@@ -1,0 +1,33 @@
+{
+  "type": "enum",
+  "uiComponent": "sensor",
+  "title": {
+    "en": "CM / meter link",
+    "sv": "CM / mätförbindelse"
+  },
+  "getable": true,
+  "setable": false,
+  "values": [
+    {
+      "id": "ok",
+      "title": {
+        "en": "OK",
+        "sv": "OK"
+      }
+    },
+    {
+      "id": "offline",
+      "title": {
+        "en": "Offline",
+        "sv": "Offline"
+      }
+    },
+    {
+      "id": "test",
+      "title": {
+        "en": "Test",
+        "sv": "Test"
+      }
+    }
+  ]
+}

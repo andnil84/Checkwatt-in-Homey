@@ -1,0 +1,16 @@
+{
+  "type": "number",
+  "uiComponent": "sensor",
+  "title": {
+    "en": "Tomorrow estimated net income",
+    "sv": "Uppskattad nettointäkt imorgon"
+  },
+  "units": {
+    "en": "SEK",
+    "sv": "SEK"
+  },
+  "decimals": 2,
+  "insights": true,
+  "getable": true,
+  "setable": false
+}

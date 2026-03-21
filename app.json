@@ -1,0 +1,639 @@
+{
+  "id": "net.checkwatt.eib",
+  "version": "0.5.6",
+  "compatibility": ">=12.0.0",
+  "sdk": 3,
+  "platforms": [
+    "local",
+    "cloud"
+  ],
+  "name": {
+    "en": "Checkwatt",
+    "sv": "Checkwatt"
+  },
+  "description": {
+    "en": "Read battery, power and FCR-D revenue from CheckWatt EnergyInBalance (unofficial API, same approach as the Home Assistant integration).",
+    "sv": "Läs batteri, effekt och FCR-D-intäkter från CheckWatt EnergyInBalance (inofficiellt API, samma angreppssätt som Home Assistant-integrationen)."
+  },
+  "category": [
+    "energy"
+  ],
+  "brandColor": "#0d9488",
+  "images": {
+    "small": "/assets/images/small.png",
+    "large": "/assets/images/large.png"
+  },
+  "author": {
+    "name": "Community"
+  },
+  "contributors": {
+    "developers": [
+      {
+        "name": "Community"
+      },
+      {
+        "name": "Thanks to faanskit and contributors for pyCheckwatt and ha-checkwatt (API reference work)"
+      }
+    ]
+  },
+  "source": "https://github.com/andnil84/Checkwatt-in-Homey",
+  "flow": {
+    "triggers": [
+      {
+        "id": "net_income_daily_changed",
+        "highlight": true,
+        "title": {
+          "en": "Daily net income changed",
+          "sv": "Daglig nettointäkt ändrades"
+        },
+        "tokens": [
+          {
+            "name": "net_income_daily",
+            "type": "number",
+            "title": {
+              "en": "Daily net income (SEK)",
+              "sv": "Daglig nettointäkt (SEK)"
+            }
+          }
+        ],
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=site"
+          }
+        ]
+      },
+      {
+        "id": "net_income_tomorrow_changed",
+        "title": {
+          "en": "Tomorrow estimated net income changed",
+          "sv": "Imorgons uppskattade nettointäkt ändrades"
+        },
+        "tokens": [
+          {
+            "name": "net_income_tomorrow",
+            "type": "number",
+            "title": {
+              "en": "Tomorrow net income (SEK)",
+              "sv": "Imorgon nettointäkt (SEK)"
+            }
+          }
+        ],
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=site"
+          }
+        ]
+      },
+      {
+        "id": "net_income_annual_changed",
+        "title": {
+          "en": "Annual net income changed",
+          "sv": "Årlig nettointäkt ändrades"
+        },
+        "tokens": [
+          {
+            "name": "net_income_annual",
+            "type": "number",
+            "title": {
+              "en": "Annual net income (SEK)",
+              "sv": "Årlig nettointäkt (SEK)"
+            }
+          }
+        ],
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=site"
+          }
+        ]
+      },
+      {
+        "id": "meter_link_status_changed",
+        "highlight": true,
+        "title": {
+          "en": "CM / meter link status changed",
+          "sv": "CM / mätförbindelse ändrades"
+        },
+        "hint": {
+          "en": "When the reported status becomes OK, Offline, or Test (.83). Token: current status.",
+          "sv": "När rapporterad status blir OK, Offline eller Test (.83). Token: aktuell status."
+        },
+        "tokens": [
+          {
+            "name": "meter_link_status",
+            "type": "string",
+            "title": {
+              "en": "Status (ok / offline / test)",
+              "sv": "Status (ok / offline / test)"
+            }
+          }
+        ],
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=site"
+          }
+        ]
+      },
+      {
+        "id": "eib_connection_lost",
+        "highlight": true,
+        "title": {
+          "en": "EnergyInBalance could not be reached",
+          "sv": "Kunde inte nå EnergyInBalance"
+        },
+        "hint": {
+          "en": "When login or API fails after a successful update. Token: error message.",
+          "sv": "När inloggning eller API misslyckas efter en lyckad uppdatering. Token: felmeddelande."
+        },
+        "tokens": [
+          {
+            "name": "error",
+            "type": "string",
+            "title": {
+              "en": "Error message",
+              "sv": "Felmeddelande"
+            }
+          }
+        ],
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=site"
+          }
+        ]
+      },
+      {
+        "id": "eib_connection_restored",
+        "highlight": true,
+        "title": {
+          "en": "EnergyInBalance is reachable again",
+          "sv": "EnergyInBalance går att nå igen"
+        },
+        "hint": {
+          "en": "When the API responds OK again after a failure.",
+          "sv": "När API:t svarar OK igen efter ett fel."
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=site"
+          }
+        ]
+      }
+    ],
+    "conditions": [
+      {
+        "id": "net_income_daily_above",
+        "title": {
+          "en": "Daily net income is above…",
+          "sv": "Daglig nettointäkt är över…"
+        },
+        "titleFormatted": {
+          "en": "Daily net income is above [[sek]] SEK",
+          "sv": "Daglig nettointäkt är över [[sek]] SEK"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=site"
+          },
+          {
+            "name": "sek",
+            "type": "number",
+            "min": 0,
+            "step": 1,
+            "title": {
+              "en": "Amount",
+              "sv": "Belopp"
+            },
+            "placeholder": {
+              "en": "SEK",
+              "sv": "SEK"
+            }
+          }
+        ]
+      },
+      {
+        "id": "net_income_daily_below",
+        "title": {
+          "en": "Daily net income is below…",
+          "sv": "Daglig nettointäkt är under…"
+        },
+        "titleFormatted": {
+          "en": "Daily net income is below [[sek]] SEK",
+          "sv": "Daglig nettointäkt är under [[sek]] SEK"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=site"
+          },
+          {
+            "name": "sek",
+            "type": "number",
+            "min": 0,
+            "step": 1,
+            "title": {
+              "en": "Amount",
+              "sv": "Belopp"
+            },
+            "placeholder": {
+              "en": "SEK",
+              "sv": "SEK"
+            }
+          }
+        ]
+      },
+      {
+        "id": "battery_below",
+        "title": {
+          "en": "Battery charge is below…",
+          "sv": "Batterinivå är under…"
+        },
+        "titleFormatted": {
+          "en": "Battery charge is below [[pct]]%",
+          "sv": "Batterinivå är under [[pct]]%"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=site"
+          },
+          {
+            "name": "pct",
+            "type": "range",
+            "min": 0,
+            "max": 1,
+            "step": 0.01,
+            "label": "%",
+            "labelMultiplier": 100,
+            "labelDecimals": 0,
+            "title": {
+              "en": "Charge level",
+              "sv": "Laddningsnivå"
+            }
+          }
+        ]
+      },
+      {
+        "id": "battery_above",
+        "title": {
+          "en": "Battery charge is above…",
+          "sv": "Batterinivå är över…"
+        },
+        "titleFormatted": {
+          "en": "Battery charge is above [[pct]]%",
+          "sv": "Batterinivå är över [[pct]]%"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=site"
+          },
+          {
+            "name": "pct",
+            "type": "range",
+            "min": 0,
+            "max": 1,
+            "step": 0.01,
+            "label": "%",
+            "labelMultiplier": 100,
+            "labelDecimals": 0,
+            "title": {
+              "en": "Charge level",
+              "sv": "Laddningsnivå"
+            }
+          }
+        ]
+      },
+      {
+        "id": "meter_link_status_is",
+        "title": {
+          "en": "CM / meter link is…",
+          "sv": "CM / mätförbindelse är…"
+        },
+        "titleFormatted": {
+          "en": "CM / meter link is [[state]]",
+          "sv": "CM / mätförbindelse är [[state]]"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=site"
+          },
+          {
+            "name": "state",
+            "type": "dropdown",
+            "title": {
+              "en": "Status",
+              "sv": "Status"
+            },
+            "values": [
+              {
+                "id": "ok",
+                "title": {
+                  "en": "OK",
+                  "sv": "OK"
+                }
+              },
+              {
+                "id": "offline",
+                "title": {
+                  "en": "Offline",
+                  "sv": "Offline"
+                }
+              },
+              {
+                "id": "test",
+                "title": {
+                  "en": "Test",
+                  "sv": "Test"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "id": "refresh_now",
+        "highlight": true,
+        "title": {
+          "en": "Refresh CheckWatt data",
+          "sv": "Uppdatera CheckWatt-data nu"
+        },
+        "hint": {
+          "en": "Fetches the latest values from EnergyInBalance (same as the regular poll).",
+          "sv": "Hämtar senaste värden från EnergyInBalance (samma som ordinarie avläsning)."
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=site"
+          }
+        ]
+      }
+    ]
+  },
+  "drivers": [
+    {
+      "id": "site",
+      "name": {
+        "en": "CheckWatt site",
+        "sv": "CheckWatt-anläggning"
+      },
+      "class": "battery",
+      "energy": {
+        "homeBattery": true
+      },
+      "capabilities": [
+        "net_income_daily",
+        "net_income_tomorrow",
+        "net_income_annual",
+        "measure_battery",
+        "measure_battery_pct",
+        "meter_link_status",
+        "status_eib"
+      ],
+      "capabilitiesOptions": {
+        "measure_battery": {
+          "title": {
+            "en": "Battery charge",
+            "sv": "Batteriladdning"
+          }
+        },
+        "measure_battery_pct": {
+          "title": {
+            "en": "Battery (%)",
+            "sv": "Batteri (%)"
+          },
+          "preventInsights": true
+        },
+        "meter_link_status": {
+          "title": {
+            "en": "CM / meter link",
+            "sv": "CM / mätförbindelse"
+          }
+        },
+        "status_eib": {
+          "title": {
+            "en": "EiB status (meter + mode)",
+            "sv": "EiB-status (mätare + läge)"
+          }
+        }
+      },
+      "images": {
+        "small": "/drivers/site/assets/small.png",
+        "large": "/drivers/site/assets/large.png"
+      },
+      "platforms": [
+        "local",
+        "cloud"
+      ],
+      "connectivity": [
+        "cloud"
+      ],
+      "pair": [
+        {
+          "id": "login_credentials",
+          "template": "login_credentials",
+          "options": {
+            "title": {
+              "en": "EnergyInBalance",
+              "sv": "EnergyInBalance"
+            },
+            "usernameLabel": {
+              "en": "Username",
+              "sv": "Användarnamn"
+            },
+            "usernamePlaceholder": {
+              "en": "EnergyInBalance login",
+              "sv": "Inloggning till EnergyInBalance"
+            },
+            "passwordLabel": {
+              "en": "Password",
+              "sv": "Lösenord"
+            },
+            "passwordPlaceholder": {
+              "en": "Password",
+              "sv": "Lösenord"
+            }
+          }
+        },
+        {
+          "id": "list_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_devices"
+          }
+        },
+        {
+          "id": "add_devices",
+          "template": "add_devices"
+        }
+      ],
+      "settings": [
+        {
+          "type": "group",
+          "label": {
+            "en": "EnergyInBalance (EiB)",
+            "sv": "EnergyInBalance (EiB)"
+          },
+          "children": [
+            {
+              "id": "username",
+              "type": "text",
+              "label": {
+                "en": "Username",
+                "sv": "Användarnamn"
+              },
+              "hint": {
+                "en": "Same as on energyinbalance.se",
+                "sv": "Samma som på energyinbalance.se"
+              },
+              "value": "",
+              "highlight": true
+            },
+            {
+              "id": "password",
+              "type": "password",
+              "label": {
+                "en": "Password",
+                "sv": "Lösenord"
+              },
+              "value": "",
+              "highlight": true
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "capabilities": {
+    "measure_battery_pct": {
+      "type": "number",
+      "uiComponent": "sensor",
+      "title": {
+        "en": "Battery charge (%)",
+        "sv": "Batteriladdning (%)"
+      },
+      "units": {
+        "en": "%",
+        "sv": "%"
+      },
+      "decimals": 0,
+      "min": 0,
+      "max": 100,
+      "insights": true,
+      "getable": true,
+      "setable": false
+    },
+    "meter_link_status": {
+      "type": "enum",
+      "uiComponent": "sensor",
+      "title": {
+        "en": "CM / meter link",
+        "sv": "CM / mätförbindelse"
+      },
+      "getable": true,
+      "setable": false,
+      "values": [
+        {
+          "id": "ok",
+          "title": {
+            "en": "OK",
+            "sv": "OK"
+          }
+        },
+        {
+          "id": "offline",
+          "title": {
+            "en": "Offline",
+            "sv": "Offline"
+          }
+        },
+        {
+          "id": "test",
+          "title": {
+            "en": "Test",
+            "sv": "Test"
+          }
+        }
+      ]
+    },
+    "net_income_annual": {
+      "type": "number",
+      "uiComponent": "sensor",
+      "title": {
+        "en": "Annual net income",
+        "sv": "Årlig nettointäkt"
+      },
+      "units": {
+        "en": "SEK",
+        "sv": "SEK"
+      },
+      "decimals": 2,
+      "insights": true,
+      "getable": true,
+      "setable": false
+    },
+    "net_income_daily": {
+      "type": "number",
+      "uiComponent": "sensor",
+      "title": {
+        "en": "Daily net income",
+        "sv": "Daglig nettointäkt"
+      },
+      "units": {
+        "en": "SEK",
+        "sv": "SEK"
+      },
+      "decimals": 2,
+      "insights": true,
+      "getable": true,
+      "setable": false
+    },
+    "net_income_tomorrow": {
+      "type": "number",
+      "uiComponent": "sensor",
+      "title": {
+        "en": "Tomorrow estimated net income",
+        "sv": "Uppskattad nettointäkt imorgon"
+      },
+      "units": {
+        "en": "SEK",
+        "sv": "SEK"
+      },
+      "decimals": 2,
+      "insights": true,
+      "getable": true,
+      "setable": false
+    },
+    "status_eib": {
+      "type": "string",
+      "uiComponent": "sensor",
+      "title": {
+        "en": "EiB status",
+        "sv": "EiB-status"
+      },
+      "getable": true,
+      "setable": false
+    }
+  }
+}

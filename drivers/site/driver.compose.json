@@ -1,0 +1,92 @@
+{
+  "id": "site",
+  "name": {
+    "en": "CheckWatt site",
+    "sv": "CheckWatt-anläggning"
+  },
+  "class": "battery",
+  "energy": {
+    "homeBattery": true
+  },
+  "capabilities": [
+    "net_income_daily",
+    "net_income_tomorrow",
+    "net_income_annual",
+    "measure_battery",
+    "measure_battery_pct",
+    "meter_link_status",
+    "status_eib"
+  ],
+  "capabilitiesOptions": {
+    "measure_battery": {
+      "title": {
+        "en": "Battery charge",
+        "sv": "Batteriladdning"
+      }
+    },
+    "measure_battery_pct": {
+      "title": {
+        "en": "Battery (%)",
+        "sv": "Batteri (%)"
+      },
+      "preventInsights": true
+    },
+    "meter_link_status": {
+      "title": {
+        "en": "CM / meter link",
+        "sv": "CM / mätförbindelse"
+      }
+    },
+    "status_eib": {
+      "title": {
+        "en": "EiB status (meter + mode)",
+        "sv": "EiB-status (mätare + läge)"
+      }
+    }
+  },
+  "images": {
+    "small": "/drivers/site/assets/small.png",
+    "large": "/drivers/site/assets/large.png"
+  },
+  "platforms": ["local", "cloud"],
+  "connectivity": ["cloud"],
+  "pair": [
+    {
+      "id": "login_credentials",
+      "template": "login_credentials",
+      "options": {
+        "title": {
+          "en": "EnergyInBalance",
+          "sv": "EnergyInBalance"
+        },
+        "usernameLabel": {
+          "en": "Username",
+          "sv": "Användarnamn"
+        },
+        "usernamePlaceholder": {
+          "en": "EnergyInBalance login",
+          "sv": "Inloggning till EnergyInBalance"
+        },
+        "passwordLabel": {
+          "en": "Password",
+          "sv": "Lösenord"
+        },
+        "passwordPlaceholder": {
+          "en": "Password",
+          "sv": "Lösenord"
+        }
+      }
+    },
+    {
+      "id": "list_devices",
+      "template": "list_devices",
+      "navigation": {
+        "next": "add_devices"
+      }
+    },
+    {
+      "id": "add_devices",
+      "template": "add_devices"
+    }
+  ]
+}

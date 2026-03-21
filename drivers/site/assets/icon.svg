@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Driver: wall battery pack + terminal; distinct from app W-mark; white on transparent -->
+  <rect x="224" y="72" width="64" height="52" rx="14" fill="#ffffff"/>
+  <rect x="128" y="140" width="256" height="300" rx="40" fill="#ffffff"/>
+</svg>
