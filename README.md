@@ -2,7 +2,7 @@
 
 Unofficial [Homey](https://homey.app) app for [Checkwatt](https://checkwatt.se) / **EnergyInBalance** — battery, FCR-D income, and site status in Flows and on the device tile.
 
-> **App Store:** Homey expects the plain-text file `readme.txt` in the repo (no URLs in that file per store rules). This `README.md` is for **GitHub** and stays in sync with the same instructions.
+> **App Store:** `readme.txt` is the plain-text description for the Homey App Store (no URLs in that file per store rules). It is intentionally short and end-user focused. **This `README.md`** adds full install-from-source steps and a **FAQ** for developers—those details are not duplicated in `readme.txt`.
 
 ---
 
