@@ -1,0 +1,16 @@
+{
+  "type": "number",
+  "uiComponent": "sensor",
+  "title": {
+    "en": "Grid power (± import/export)",
+    "sv": "Elnätseffekt (± import/export)"
+  },
+  "units": {
+    "en": "W",
+    "sv": "W"
+  },
+  "decimals": 0,
+  "insights": true,
+  "getable": true,
+  "setable": false
+}

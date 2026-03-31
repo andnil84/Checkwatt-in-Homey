@@ -30,6 +30,11 @@ class SiteDevice extends Homey.Device {
     if (!this.hasCapability('status_eib')) {
       await this.addCapability('status_eib').catch(() => {});
     }
+    for (const cap of ['grid_power', 'battery_power', 'solar_power']) {
+      if (!this.hasCapability(cap)) {
+        await this.addCapability(cap).catch(() => {});
+      }
+    }
     this._timer = this.homey.setInterval(() => this.poll(), INTERVAL_MS);
     await this.poll();
   }
@@ -97,6 +102,16 @@ class SiteDevice extends Homey.Device {
       if (client.batterySoc != null) {
         await this.setCapabilityValue('measure_battery', client.batterySoc).catch(() => {});
         await this.setCapabilityValue('measure_battery_pct', client.batterySoc).catch(() => {});
+      }
+
+      if (client.gridPowerW != null) {
+        await this.setCapabilityValue('grid_power', client.gridPowerW).catch(() => {});
+      }
+      if (client.batteryPowerW != null) {
+        await this.setCapabilityValue('battery_power', client.batteryPowerW).catch(() => {});
+      }
+      if (client.solarPowerW != null) {
+        await this.setCapabilityValue('solar_power', client.solarPowerW).catch(() => {});
       }
 
       if (client.meterLinkStatus != null) {

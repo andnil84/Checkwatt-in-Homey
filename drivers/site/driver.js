@@ -57,6 +57,24 @@ class SiteDriver extends Homey.Driver {
         const val = await device.getCapabilityValue('meter_link_status');
         return val === args.state;
       });
+
+    this.homey.flow
+      .getConditionCard('grid_power_above')
+      .registerRunListener(async (args) => {
+        const device = args.device;
+        const threshold = Number(args.w);
+        const val = await device.getCapabilityValue('grid_power');
+        return val != null && !Number.isNaN(threshold) && Number(val) > threshold;
+      });
+
+    this.homey.flow
+      .getConditionCard('grid_power_below')
+      .registerRunListener(async (args) => {
+        const device = args.device;
+        const threshold = Number(args.w);
+        const val = await device.getCapabilityValue('grid_power');
+        return val != null && !Number.isNaN(threshold) && Number(val) < threshold;
+      });
   }
 
   /**

@@ -261,6 +261,70 @@
           ]
         }
       ]
+    },
+    {
+      "id": "grid_power_above",
+      "title": {
+        "en": "Grid power is above…",
+        "sv": "Elnätseffekt är över…"
+      },
+      "titleFormatted": {
+        "en": "Grid power is above [[w]] W",
+        "sv": "Elnätseffekt är över [[w]] W"
+      },
+      "hint": {
+        "en": "Uses EiB instantaneous grid power (W). Typical sign: positive = import, negative = export.",
+        "sv": "Använder momentan elnätseffekt från EiB (W). Ofta: positiv = import, negativ = export."
+      },
+      "args": [
+        {
+          "name": "w",
+          "type": "number",
+          "min": -50000,
+          "max": 50000,
+          "step": 50,
+          "title": {
+            "en": "Power (W)",
+            "sv": "Effekt (W)"
+          },
+          "placeholder": {
+            "en": "Watts",
+            "sv": "Watt"
+          }
+        }
+      ]
+    },
+    {
+      "id": "grid_power_below",
+      "title": {
+        "en": "Grid power is below…",
+        "sv": "Elnätseffekt är under…"
+      },
+      "titleFormatted": {
+        "en": "Grid power is below [[w]] W",
+        "sv": "Elnätseffekt är under [[w]] W"
+      },
+      "hint": {
+        "en": "Uses EiB instantaneous grid power (W). Typical sign: positive = import, negative = export.",
+        "sv": "Använder momentan elnätseffekt från EiB (W). Ofta: positiv = import, negativ = export."
+      },
+      "args": [
+        {
+          "name": "w",
+          "type": "number",
+          "min": -50000,
+          "max": 50000,
+          "step": 50,
+          "title": {
+            "en": "Power (W)",
+            "sv": "Effekt (W)"
+          },
+          "placeholder": {
+            "en": "Watts",
+            "sv": "Watt"
+          }
+        }
+      ]
     }
   ],
   "actions": [

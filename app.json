@@ -1,6 +1,6 @@
 {
   "id": "net.checkwatt.eib",
-  "version": "0.5.6",
+  "version": "0.5.7",
   "compatibility": ">=12.0.0",
   "sdk": 3,
   "platforms": [
@@ -367,6 +367,80 @@
             ]
           }
         ]
+      },
+      {
+        "id": "grid_power_above",
+        "title": {
+          "en": "Grid power is above…",
+          "sv": "Elnätseffekt är över…"
+        },
+        "titleFormatted": {
+          "en": "Grid power is above [[w]] W",
+          "sv": "Elnätseffekt är över [[w]] W"
+        },
+        "hint": {
+          "en": "Uses EiB instantaneous grid power (W). Typical sign: positive = import, negative = export.",
+          "sv": "Använder momentan elnätseffekt från EiB (W). Ofta: positiv = import, negativ = export."
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=site"
+          },
+          {
+            "name": "w",
+            "type": "number",
+            "min": -50000,
+            "max": 50000,
+            "step": 50,
+            "title": {
+              "en": "Power (W)",
+              "sv": "Effekt (W)"
+            },
+            "placeholder": {
+              "en": "Watts",
+              "sv": "Watt"
+            }
+          }
+        ]
+      },
+      {
+        "id": "grid_power_below",
+        "title": {
+          "en": "Grid power is below…",
+          "sv": "Elnätseffekt är under…"
+        },
+        "titleFormatted": {
+          "en": "Grid power is below [[w]] W",
+          "sv": "Elnätseffekt är under [[w]] W"
+        },
+        "hint": {
+          "en": "Uses EiB instantaneous grid power (W). Typical sign: positive = import, negative = export.",
+          "sv": "Använder momentan elnätseffekt från EiB (W). Ofta: positiv = import, negativ = export."
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=site"
+          },
+          {
+            "name": "w",
+            "type": "number",
+            "min": -50000,
+            "max": 50000,
+            "step": 50,
+            "title": {
+              "en": "Power (W)",
+              "sv": "Effekt (W)"
+            },
+            "placeholder": {
+              "en": "Watts",
+              "sv": "Watt"
+            }
+          }
+        ]
       }
     ],
     "actions": [
@@ -408,6 +482,9 @@
         "net_income_annual",
         "measure_battery",
         "measure_battery_pct",
+        "grid_power",
+        "battery_power",
+        "solar_power",
         "meter_link_status",
         "status_eib"
       ],
@@ -435,6 +512,24 @@
           "title": {
             "en": "EiB status (meter + mode)",
             "sv": "EiB-status (mätare + läge)"
+          }
+        },
+        "grid_power": {
+          "title": {
+            "en": "Grid power (EiB)",
+            "sv": "Elnätseffekt (EiB)"
+          }
+        },
+        "battery_power": {
+          "title": {
+            "en": "Battery power (EiB)",
+            "sv": "Batterieffekt (EiB)"
+          }
+        },
+        "solar_power": {
+          "title": {
+            "en": "Solar power (EiB)",
+            "sv": "Soleffekt (EiB)"
           }
         }
       },
@@ -526,6 +621,38 @@
     }
   ],
   "capabilities": {
+    "battery_power": {
+      "type": "number",
+      "uiComponent": "sensor",
+      "title": {
+        "en": "Battery power",
+        "sv": "Batterieffekt"
+      },
+      "units": {
+        "en": "W",
+        "sv": "W"
+      },
+      "decimals": 0,
+      "insights": true,
+      "getable": true,
+      "setable": false
+    },
+    "grid_power": {
+      "type": "number",
+      "uiComponent": "sensor",
+      "title": {
+        "en": "Grid power (± import/export)",
+        "sv": "Elnätseffekt (± import/export)"
+      },
+      "units": {
+        "en": "W",
+        "sv": "W"
+      },
+      "decimals": 0,
+      "insights": true,
+      "getable": true,
+      "setable": false
+    },
     "measure_battery_pct": {
       "type": "number",
       "uiComponent": "sensor",
@@ -621,6 +748,22 @@
         "sv": "SEK"
       },
       "decimals": 2,
+      "insights": true,
+      "getable": true,
+      "setable": false
+    },
+    "solar_power": {
+      "type": "number",
+      "uiComponent": "sensor",
+      "title": {
+        "en": "Solar power",
+        "sv": "Soleffekt"
+      },
+      "units": {
+        "en": "W",
+        "sv": "W"
+      },
+      "decimals": 0,
       "insights": true,
       "getable": true,
       "setable": false

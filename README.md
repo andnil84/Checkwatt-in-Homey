@@ -1,6 +1,6 @@
 # Checkwatt in Homey
 
-Inofficiell [Homey](https://homey.app)-app för [Checkwatt](https://checkwatt.se) / **EnergyInBalance** — batteri, **nettointäkter** (samma som i portalen: **alla** intäkter), och status i flöden och på enhetens platta.
+Inofficiell [Homey](https://homey.app)-app för [Checkwatt](https://checkwatt.se) / **EnergyInBalance** — batteri, **momentan effekt** (elnät/sol/batteri från EiB), **nettointäkter** (samma som i portalen: **alla** intäkter), och status i flöden och på enhetens platta. **Spotpris** i Homey får du via en **annan app**; kombinera med flöden om du vill styra mot lågt pris.
 
 > **Butik:** `readme.txt` är den korta texten för Homey App Store (inga URL:er enligt deras regler). **Denna `README.md`** har installation från källkod och FAQ för utvecklare — det återfinns inte i `readme.txt`.
 >
@@ -12,7 +12,7 @@ Inofficiell [Homey](https://homey.app)-app för [Checkwatt](https://checkwatt.se
 
 ### Vad appen gör
 
-Appen kopplar Homey till din Checkwatt-anläggning i EnergyInBalance. Du kan följa batterinivå, nettointäkter för anläggningen (samma som i portalen—**alla** intäkter), och status på enhetens platta, i Insights och i flöden. Logga in med samma användarnamn och lösenord som till tjänsten EnergyInBalance. Appen är community-utvecklad, är inte officiell från Checkwatt och använder inofficiell åtkomst till samma webb-API:er som de officiella klienterna. Tack till bidragsgivare står i appmanifestet under `contributors`.
+Appen kopplar Homey till din Checkwatt-anläggning i EnergyInBalance. Du kan följa batterinivå, **momentan effekt** mot elnät, batteri och sol (i watt, när EiB levererar värdena), nettointäkter för anläggningen (samma som i portalen—**alla** intäkter), och status på enhetens platta, i Insights och i flöden. I **Flöden** finns villkor som jämför elnätseffekt med en tröskel (t.ex. styra förbrukning när importen är låg). **Elspot / timpris** ingår inte här — använd en **spotpris- eller elpris-app** i Homey och koppla ihop med flöden om du vill optimera mot pris. Logga in med samma användarnamn och lösenord som till tjänsten EnergyInBalance. Appen är community-utvecklad, är inte officiell från Checkwatt och använder inofficiell åtkomst till samma webb-API:er som de officiella klienterna. Tack till bidragsgivare står i appmanifestet under `contributors`.
 
 ### Så här får du appen på Homey (när den finns i App Store)
 
@@ -121,15 +121,17 @@ Låt fönstret vara öppet medan du testar. Avsluta med **Ctrl+C** när du är k
 
 ## English
 
-Unofficial [Homey](https://homey.app) app for [Checkwatt](https://checkwatt.se) / **EnergyInBalance** — battery, **net income** (same totals as the portal: **all** revenue streams), and site status in Flows and on the device tile.
+Unofficial [Homey](https://homey.app) app for [Checkwatt](https://checkwatt.se) / **EnergyInBalance** — battery, **instantaneous power** (grid, solar, battery from EiB where available), **net income** (same totals as the portal: **all** revenue streams), and site status in Flows and on the device tile. **Spot prices** need a **separate Homey app**; combine with Flows if you want price-based automation.
 
 ### What this app does
 
 **In plain terms:** This app connects your **Homey** to your **Checkwatt EnergyInBalance** site (your battery / energy installation). You can use it to:
 
 - See **battery level** (how full the battery is).
+- See **instantaneous power** in watts — **grid** (import/export sign as reported by EiB), **battery**, and **solar** when the API provides them (same underlying snapshot as the portal’s energy flow).
 - See **net income** for the site — the **same totals** as in the EnergyInBalance portal (**all** revenue streams together, not a single product line).
-- See **status** on the **device tile**, in **Insights** (history / graphs), and in **Flows** (automations).
+- See **status** on the **device tile**, in **Insights** (history / graphs), and in **Flows** (automations). Flow **conditions** include comparing **grid power** to a threshold (e.g. reduce loads when import is high).
+- **Spot / day-ahead price** is **not** included — use another Homey app for electricity prices and combine with these sensors in Flows.
 
 **Signing in:** Use the **same username and password** you already use for the EnergyInBalance website and official Checkwatt apps. You are **not** creating a new account — Homey only stores what you enter so it can log in for you.
 

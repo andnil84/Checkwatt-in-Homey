@@ -14,6 +14,9 @@
     "net_income_annual",
     "measure_battery",
     "measure_battery_pct",
+    "grid_power",
+    "battery_power",
+    "solar_power",
     "meter_link_status",
     "status_eib"
   ],
@@ -41,6 +44,24 @@
       "title": {
         "en": "EiB status (meter + mode)",
         "sv": "EiB-status (mätare + läge)"
+      }
+    },
+    "grid_power": {
+      "title": {
+        "en": "Grid power (EiB)",
+        "sv": "Elnätseffekt (EiB)"
+      }
+    },
+    "battery_power": {
+      "title": {
+        "en": "Battery power (EiB)",
+        "sv": "Batterieffekt (EiB)"
+      }
+    },
+    "solar_power": {
+      "title": {
+        "en": "Solar power (EiB)",
+        "sv": "Soleffekt (EiB)"
       }
     }
   },
