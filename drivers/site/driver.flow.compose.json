@@ -325,6 +325,134 @@
           }
         }
       ]
+    },
+    {
+      "id": "battery_power_above",
+      "title": {
+        "en": "Battery power is above…",
+        "sv": "Batterieffekt är över…"
+      },
+      "titleFormatted": {
+        "en": "Battery power is above [[w]] W",
+        "sv": "Batterieffekt är över [[w]] W"
+      },
+      "hint": {
+        "en": "Uses EiB instantaneous battery power (W). Sign depends on how EiB reports charge vs discharge.",
+        "sv": "Använder momentan batterieffekt från EiB (W). Tecken beror på hur EiB rapporterar laddning/urtag."
+      },
+      "args": [
+        {
+          "name": "w",
+          "type": "number",
+          "min": -50000,
+          "max": 50000,
+          "step": 50,
+          "title": {
+            "en": "Power (W)",
+            "sv": "Effekt (W)"
+          },
+          "placeholder": {
+            "en": "Watts",
+            "sv": "Watt"
+          }
+        }
+      ]
+    },
+    {
+      "id": "battery_power_below",
+      "title": {
+        "en": "Battery power is below…",
+        "sv": "Batterieffekt är under…"
+      },
+      "titleFormatted": {
+        "en": "Battery power is below [[w]] W",
+        "sv": "Batterieffekt är under [[w]] W"
+      },
+      "hint": {
+        "en": "Uses EiB instantaneous battery power (W). Sign depends on how EiB reports charge vs discharge.",
+        "sv": "Använder momentan batterieffekt från EiB (W). Tecken beror på hur EiB rapporterar laddning/urtag."
+      },
+      "args": [
+        {
+          "name": "w",
+          "type": "number",
+          "min": -50000,
+          "max": 50000,
+          "step": 50,
+          "title": {
+            "en": "Power (W)",
+            "sv": "Effekt (W)"
+          },
+          "placeholder": {
+            "en": "Watts",
+            "sv": "Watt"
+          }
+        }
+      ]
+    },
+    {
+      "id": "solar_power_above",
+      "title": {
+        "en": "Solar power is above…",
+        "sv": "Soleffekt är över…"
+      },
+      "titleFormatted": {
+        "en": "Solar power is above [[w]] W",
+        "sv": "Soleffekt är över [[w]] W"
+      },
+      "hint": {
+        "en": "Uses EiB instantaneous solar generation (W) when the API provides it.",
+        "sv": "Använder momentan soleffekt från EiB (W) när API:t levererar värdet."
+      },
+      "args": [
+        {
+          "name": "w",
+          "type": "number",
+          "min": 0,
+          "max": 100000,
+          "step": 50,
+          "title": {
+            "en": "Power (W)",
+            "sv": "Effekt (W)"
+          },
+          "placeholder": {
+            "en": "Watts",
+            "sv": "Watt"
+          }
+        }
+      ]
+    },
+    {
+      "id": "solar_power_below",
+      "title": {
+        "en": "Solar power is below…",
+        "sv": "Soleffekt är under…"
+      },
+      "titleFormatted": {
+        "en": "Solar power is below [[w]] W",
+        "sv": "Soleffekt är under [[w]] W"
+      },
+      "hint": {
+        "en": "Uses EiB instantaneous solar generation (W) when the API provides it.",
+        "sv": "Använder momentan soleffekt från EiB (W) när API:t levererar värdet."
+      },
+      "args": [
+        {
+          "name": "w",
+          "type": "number",
+          "min": 0,
+          "max": 100000,
+          "step": 50,
+          "title": {
+            "en": "Power (W)",
+            "sv": "Effekt (W)"
+          },
+          "placeholder": {
+            "en": "Watts",
+            "sv": "Watt"
+          }
+        }
+      ]
     }
   ],
   "actions": [

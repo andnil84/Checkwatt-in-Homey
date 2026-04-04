@@ -75,6 +75,42 @@ class SiteDriver extends Homey.Driver {
         const val = await device.getCapabilityValue('grid_power');
         return val != null && !Number.isNaN(threshold) && Number(val) < threshold;
       });
+
+    this.homey.flow
+      .getConditionCard('battery_power_above')
+      .registerRunListener(async (args) => {
+        const device = args.device;
+        const threshold = Number(args.w);
+        const val = await device.getCapabilityValue('battery_power');
+        return val != null && !Number.isNaN(threshold) && Number(val) > threshold;
+      });
+
+    this.homey.flow
+      .getConditionCard('battery_power_below')
+      .registerRunListener(async (args) => {
+        const device = args.device;
+        const threshold = Number(args.w);
+        const val = await device.getCapabilityValue('battery_power');
+        return val != null && !Number.isNaN(threshold) && Number(val) < threshold;
+      });
+
+    this.homey.flow
+      .getConditionCard('solar_power_above')
+      .registerRunListener(async (args) => {
+        const device = args.device;
+        const threshold = Number(args.w);
+        const val = await device.getCapabilityValue('solar_power');
+        return val != null && !Number.isNaN(threshold) && Number(val) > threshold;
+      });
+
+    this.homey.flow
+      .getConditionCard('solar_power_below')
+      .registerRunListener(async (args) => {
+        const device = args.device;
+        const threshold = Number(args.w);
+        const val = await device.getCapabilityValue('solar_power');
+        return val != null && !Number.isNaN(threshold) && Number(val) < threshold;
+      });
   }
 
   /**
