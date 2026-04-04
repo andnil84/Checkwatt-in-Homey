@@ -1,6 +1,6 @@
 {
   "id": "net.checkwatt.eib",
-  "version": "0.5.10",
+  "version": "0.5.11",
   "compatibility": ">=12.0.0",
   "sdk": 3,
   "platforms": [
@@ -8,8 +8,8 @@
     "cloud"
   ],
   "name": {
-    "en": "Checkwatt",
-    "sv": "Checkwatt"
+    "en": "Checkwatt - Unofficial",
+    "sv": "Checkwatt - Inofficiell"
   },
   "description": {
     "en": "See your site’s battery, power, and net revenue in Homey—same totals as EnergyInBalance (all income streams). Unofficial API.",

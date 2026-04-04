@@ -1,4 +1,4 @@
-# Checkwatt in Homey
+# Checkwatt - Unofficial (Homey)
 
 Inofficiell [Homey](https://homey.app)-app för [Checkwatt](https://checkwatt.se) / **EnergyInBalance** — batteri, **momentan effekt** (elnät/sol/batteri från EiB), **nettointäkter** (samma som i portalen: **alla** intäkter), och status i flöden och på enhetens platta. **Spotpris** i Homey får du via en **annan app**; kombinera med flöden om du vill styra mot lågt pris.
 

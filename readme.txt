@@ -1,3 +1,5 @@
+Checkwatt - Unofficial
+
 WHAT THIS APP DOES
 
 This app connects Homey to your CheckWatt EnergyInBalance account. You can see battery level, instantaneous power from EiB where available (grid, solar, battery), net income for the site, and site status on the device tile, in Insights and in Flows. Flows can compare grid power to thresholds for automations. For spot electricity prices in Homey, use a separate energy-price app and combine with Flows. Sign in with the same username and password you use for the EnergyInBalance service. This app is made by the community, is not official Checkwatt software, and uses unofficial access to the same web APIs the mobile and web clients use. Credit for API understanding belongs in the app manifest contributors section.
@@ -14,6 +16,8 @@ If you install from the project source yourself, you need Node.js and the Homey 
 
 
 ---
+
+Checkwatt - Inofficiell
 
 VAD APPEN GÖR
 

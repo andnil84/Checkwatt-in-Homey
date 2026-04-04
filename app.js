@@ -4,7 +4,7 @@ const Homey = require('homey');
 
 class CheckwattApp extends Homey.App {
   async onInit() {
-    this.log('Checkwatt (EnergyInBalance) started');
+    this.log('Checkwatt - Unofficial (EnergyInBalance) started');
   }
 }
 
