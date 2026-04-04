@@ -1,11 +1,10 @@
 {
   "id": "net.checkwatt.eib",
-  "version": "0.5.12",
+  "version": "0.5.14",
   "compatibility": ">=12.0.0",
   "sdk": 3,
   "platforms": [
-    "local",
-    "cloud"
+    "local"
   ],
   "name": {
     "en": "Checkwatt - Unofficial",
@@ -687,8 +686,7 @@
         "large": "/drivers/site/assets/large.png"
       },
       "platforms": [
-        "local",
-        "cloud"
+        "local"
       ],
       "connectivity": [
         "cloud"
