@@ -1,6 +1,6 @@
 {
   "id": "net.checkwatt.eib",
-  "version": "0.5.11",
+  "version": "0.5.12",
   "compatibility": ">=12.0.0",
   "sdk": 3,
   "platforms": [
@@ -37,6 +37,7 @@
     ]
   },
   "source": "https://github.com/andnil84/Checkwatt-in-Homey",
+  "support": "https://github.com/andnil84/Checkwatt-in-Homey/issues",
   "flow": {
     "triggers": [
       {
