@@ -10,5 +10,8 @@
   },
   "0.5.17": {
     "en": "Bug fixes"
+  },
+  "0.5.18": {
+    "en": "App and store visuals: brand color, vector logo (symmetric lightning), xlarge image; driver icon refresh; image build script."
   }
 }

@@ -1,5 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-  <!-- Driver: wall battery pack + terminal; distinct from app W-mark; white on transparent -->
-  <rect x="224" y="72" width="64" height="52" rx="14" fill="#ffffff"/>
-  <rect x="128" y="140" width="256" height="300" rx="40" fill="#ffffff"/>
+  <!-- DIN-rail smart meter: black/white, rounded square frame -->
+  <rect x="40" y="40" width="432" height="432" rx="56" fill="#ffffff" stroke="#1a1a1a" stroke-width="22"/>
+  <rect x="126" y="108" width="260" height="296" rx="22" fill="#ffffff" stroke="#1a1a1a" stroke-width="18" stroke-linejoin="round"/>
+  <rect x="158" y="146" width="196" height="88" rx="12" fill="#f2f2f2" stroke="#1a1a1a" stroke-width="14"/>
+  <circle cx="184" cy="372" r="20" fill="#1a1a1a"/>
+  <circle cx="256" cy="372" r="20" fill="#1a1a1a"/>
+  <circle cx="328" cy="372" r="20" fill="#1a1a1a"/>
 </svg>

@@ -1,4 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 47">
-  <!-- Raster from author artwork; transparent outside circle; scales cleanly in Homey -->
-  <image href="data:image/png;base64,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" width="52" height="47"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Original-style mark: orange / white, lightning split, two dots. Transparent outside disc. -->
+  <defs>
+    <clipPath id="disc"><circle cx="256" cy="256" r="188"/></clipPath>
+  </defs>
+  <g clip-path="url(#disc)">
+    <circle cx="256" cy="256" r="188" fill="#f97316"/>
+    <path
+      fill="#ffffff"
+      d="M256 68A188 188 0 0 0 256 444L285 350 227 270 285 190 227 110Z"
+    />
+    <circle cx="182" cy="210" r="20" fill="#f97316"/>
+    <circle cx="330" cy="302" r="20" fill="#ffffff"/>
+  </g>
 </svg>

@@ -1,6 +1,6 @@
 {
   "id": "net.checkwatt.eib",
-  "version": "0.5.17",
+  "version": "0.5.18",
   "compatibility": ">=12.0.0",
   "sdk": 3,
   "platforms": [
@@ -17,10 +17,11 @@
   "category": [
     "energy"
   ],
-  "brandColor": "#0d9488",
+  "brandColor": "#374151",
   "images": {
     "small": "/assets/images/small.png",
-    "large": "/assets/images/large.png"
+    "large": "/assets/images/large.png",
+    "xlarge": "/assets/images/xlarge.png"
   },
   "author": {
     "name": "Community"
