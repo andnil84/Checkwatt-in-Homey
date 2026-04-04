@@ -69,7 +69,7 @@
     "small": "/drivers/site/assets/small.png",
     "large": "/drivers/site/assets/large.png"
   },
-  "platforms": ["local", "cloud"],
+  "platforms": ["local"],
   "connectivity": ["cloud"],
   "pair": [
     {
