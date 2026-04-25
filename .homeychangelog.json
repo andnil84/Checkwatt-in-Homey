@@ -13,5 +13,8 @@
   },
   "0.5.18": {
     "en": "App and store visuals: brand color, vector logo (symmetric lightning), xlarge image; driver icon refresh; image build script."
+  },
+  "0.6.0": {
+    "en": "Adjustments"
   }
 }
